@@ -14,6 +14,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.person.Remark;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -121,4 +122,15 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
+    /**
+     * Parses a {@code String remark} into an {@code Remark}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static Remark parseRemark(String remark) {
+        requireNonNull(remark);
+        String trimmedRemark = remark.trim();
+        return new Remark(trimmedRemark);
+    }
+
 }
