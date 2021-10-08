@@ -98,10 +98,16 @@ public class EditCommand extends Command {
         ID updatedId = editStudentDescriptor.getId().orElse(studentToEdit.getId());
 
         List<Group> updatedGroups = editStudentDescriptor.getGroups().orElse(studentToEdit.getGroups());
-        Map<Assessment, Score> updatedScores = editStudentDescriptor.getScores().orElse(studentToEdit.getScores());
+        List<Score> updatedScores = editStudentDescriptor.getScores().orElse(studentToEdit.getScores());
         Set<Tag> updatedTags = editStudentDescriptor.getTags().orElse(studentToEdit.getTags());
 
-        return new Student(updatedName, updatedId, updatedGroups, updatedScores, updatedTags);
+        Student newStudent = new Student(updatedName, updatedId, updatedTags);
+        updatedGroups.forEach(newStudent::addGroup);
+        updatedScores.forEach(score -> {
+            score.deleteScore();
+            Score.updateScore(score.getAssessment(), newStudent, score.getScore());
+        });
+        return newStudent;
     }
 
     @Override
@@ -130,7 +136,7 @@ public class EditCommand extends Command {
         private Name name;
         private ID id;
         private List<Group> groups;
-        private Map<Assessment, Score> scores;
+        private List<Score> scores;
         private Set<Tag> tags;
 
         public EditStudentDescriptor() {}
@@ -191,17 +197,17 @@ public class EditCommand extends Command {
          * Sets {@code scores} to this object's {@code scores}.
          * A defensive copy of {@code scores} is used internally.
          */
-        public void setScores(Map<Assessment, Score> scores) {
-            this.scores = (scores != null) ? new HashMap<>(scores) : null;
+        public void setScores(List<Score> scores) {
+            this.scores = (scores != null) ? new ArrayList<>(scores) : null;
         }
 
         /**
-         * Returns an unmodifiable score map, which throws {@code UnsupportedOperationException}
+         * Returns an unmodifiable score list, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code scores} is null.
          */
-        public Optional<Map<Assessment, Score>> getScores() {
-            return (scores != null) ? Optional.of(Collections.unmodifiableMap(scores)) : Optional.empty();
+        public Optional<List<Score>> getScores() {
+            return (scores != null) ? Optional.of(Collections.unmodifiableList(scores)) : Optional.empty();
         }
 
 

@@ -3,24 +3,24 @@ package seedu.address.model.student;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Represents a Student's assessment.
  * Guarantees: immutable; is valid as declared in {@link #isValidAssessment(String)}
  */
 public class Assessment {
-
     public static final String MESSAGE_CONSTRAINTS =
-            "Assessment name should be in AXX format, where A abbreviates the type and XX denotes the numbering";
-    public static final String VALIDATION_REGEX = "[A-Za-z]\\d{2}";
+            "Assessment name should not be blank";
+    public static final String VALIDATION_REGEX = ".*\\S.*";
 
     // Assessment score list
-    public final Map<ID, Score> scores = new HashMap<>();
+    private final List<Score> scores = new ArrayList<>();
 
     // Assessment name
-    public final String value;
+    private final String name;
 
     /**
      * Constructs an {@code Assessment}.
@@ -30,7 +30,14 @@ public class Assessment {
     public Assessment(String name) {
         requireNonNull(name);
         checkArgument(isValidAssessment(name), MESSAGE_CONSTRAINTS);
-        value = reformatAssessment(name);
+        this.name = name;
+    }
+
+    public void addScore(Score score) {
+        if (scores.contains(score)) {
+            return;
+        }
+        scores.add(score);
     }
 
     /**
@@ -40,26 +47,21 @@ public class Assessment {
         return test.matches(VALIDATION_REGEX);
     }
 
-    /**
-     * Reformats valid assessment name to uppercase.
-     */
-    public static String reformatAssessment(String name) {
-        assert name.length() == 3; // assessment name should already be validated
-        char type = Character.toUpperCase(name.charAt(0));
-        return type + name.substring(1);
-    }
-
     public String getName() {
-        return value;
+        return name;
     }
 
-    public void setScores(ID id, Score score) {
-        scores.put(id, score);
+    public List<Score> getScores() {
+        return Collections.unmodifiableList(scores);
+    }
+
+    public void removeScore(Score score) {
+        scores.remove(score);
     }
 
     @Override
     public String toString() {
-        return value;
+        return name;
     }
 
     /**
@@ -79,12 +81,12 @@ public class Assessment {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Assessment // instanceof handles nulls
-                && value.equals(((Assessment) other).value)); // state check
+                && name.equals(((Assessment) other).name) // state check
+                && scores.equals(((Assessment) other).scores)); // state check
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return name.hashCode();
     }
-
 }

@@ -30,8 +30,8 @@ class JsonAdaptedStudent {
     private final String name;
     private final String id;
     private final List<String> groups = new ArrayList<>();
-    // Note: Scores are stored on the JSON-adapted Assessments, and retrieved from there to avoid duplicate objects
-    private final List<String> assessments = new ArrayList<>();
+    // Keys: assessment names, values: scores
+    private final Map<String, String> scores = new HashMap<>();
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -40,15 +40,15 @@ class JsonAdaptedStudent {
     @JsonCreator
     public JsonAdaptedStudent(@JsonProperty("name") String name, @JsonProperty("id") String id,
                               @JsonProperty("groups") List<String> groups,
-                              @JsonProperty("assessments") List<String> assessments,
+                              @JsonProperty("scores") Map<String, String> scores,
                               @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.id = id;
         if (groups != null) {
             this.groups.addAll(groups);
         }
-        if (assessments != null) {
-            this.assessments.addAll(assessments);
+        if (scores != null) {
+            this.scores.putAll(scores);
         }
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -65,11 +65,12 @@ class JsonAdaptedStudent {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         groups.addAll(source.getGroups().stream()
-                .map(group -> group.value)
+                .map(Group::getName)
                 .collect(Collectors.toList()));
-        assessments.addAll(source.getScores().keySet().stream()
-                .map(Assessment::getName)
-                .collect(Collectors.toList()));
+
+        for (Score score : source.getScores()) {
+            scores.put(score.getAssessment().getName(), score.getScore());
+        }
     }
 
     /**
@@ -94,23 +95,26 @@ class JsonAdaptedStudent {
         }
         final ID modelId = new ID(id);
 
-        final Map<Assessment, Score> modelScores = new HashMap<>();
-
-        assessmentList.stream()
-                .filter(assessment -> assessments.contains(assessment.getName()))
-                .forEach(assessment -> modelScores.put(assessment, assessment.scores.get(modelId)));
-
-        final List<Group> modelGroups = groupList.stream()
-                .filter(group -> groups.contains(group.value))
-                .collect(Collectors.toList());
-
         final List<Tag> studentTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
             studentTags.add(tag.toModelType());
         }
         final Set<Tag> modelTags = new HashSet<>(studentTags);
 
+        Student modelStudent = new Student(modelName, modelId, modelTags);
 
-        return new Student(modelName, modelId, modelGroups, modelScores, modelTags);
+        groupList.forEach(group -> {
+            if (groups.contains(group.getName())) {
+                group.addStudent(modelStudent);
+            }
+        });
+
+        assessmentList.forEach(assessment -> {
+            if (scores.containsKey(assessment.getName())) {
+                Score.updateScore(assessment, modelStudent, scores.get(assessment.getName()));
+            }
+        });
+
+        return modelStudent;
     }
 }

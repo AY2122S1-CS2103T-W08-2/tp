@@ -21,7 +21,7 @@ public class JsonAdaptedGroup {
      * Converts a given {@code Group} into this class for Jackson use.
      */
     public JsonAdaptedGroup(Group source) {
-        groupName = source.value;
+        groupName = source.getName();
     }
 
     @JsonValue

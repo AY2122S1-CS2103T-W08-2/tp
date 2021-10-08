@@ -4,13 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class Group {
-
     public static final String MESSAGE_CONSTRAINTS =
-            "Group name should be in AXXA format, where A can be any alphabet and X can be any numerical number";
-    public static final String VALIDATION_REGEX = "[A-Za-z]\\d{2}[A-Za-z]";
+            "Group name should not be blank";
+    public static final String VALIDATION_REGEX = ".*\\S.*";
 
     // Group name
-    public final String value;
+    private final String name;
 
     /**
      * Constructs an {@code Group}.
@@ -20,7 +19,24 @@ public class Group {
     public Group(String name) {
         requireNonNull(name);
         checkArgument(isValidGroup(name), MESSAGE_CONSTRAINTS);
-        value = reformatGroup(name);
+        this.name = name;
+    }
+
+    public Group(String name, Student... students) {
+        requireNonNull(name);
+        checkArgument(isValidGroup(name), MESSAGE_CONSTRAINTS);
+        this.name = name;
+        for (Student student : students) {
+            addStudent(student);
+        }
+    }
+
+    public void addStudent(Student student) {
+        student.addGroup(this);
+    }
+
+    public String getName() {
+        return name;
     }
 
     /**
@@ -30,30 +46,21 @@ public class Group {
         return test.matches(VALIDATION_REGEX);
     }
 
-    /**
-     * Reformats valid Group name to uppercase.
-     */
-    public static String reformatGroup(String name) {
-        assert name.length() == 4; // Group name should already be validated
-        char type = Character.toUpperCase(name.charAt(0));
-        return type + name.substring(1, 3) + Character.toUpperCase(name.charAt(3));
-    }
-
     @Override
     public String toString() {
-        return value;
+        return name;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Group // instanceof handles nulls
-                && value.equals(((Group) other).value)); // state check
+                && name.equals(((Group) other).name)); // state check
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return name.hashCode();
     }
 
 }

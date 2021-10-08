@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import seedu.address.model.student.exceptions.DuplicateGroupException;
 import seedu.address.model.student.exceptions.GroupNotFoundException;
@@ -93,6 +94,20 @@ public class GroupList {
         }
 
         Collections.copy(this.groups, groups);
+    }
+
+    /**
+     * Retrieves the {@code Group} with the provided name.
+     */
+    public Optional<Group> getGroup(String groupName) {
+        requireNonNull(groupName);
+        Group result = null;
+        for (Group group : groups) {
+            if (group.getName().equals(groupName)) {
+                result = group;
+            }
+        }
+        return Optional.ofNullable(result);
     }
 
     @Override

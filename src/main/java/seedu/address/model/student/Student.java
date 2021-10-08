@@ -4,10 +4,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -18,26 +16,37 @@ import seedu.address.model.tag.Tag;
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Student {
-
     // Identity fields
     private final Name name;
     private final ID id;
 
     // Data fields
     private final List<Group> groups = new ArrayList<>();
-    private final Map<Assessment, Score> scores = new HashMap<>();
+    private final List<Score> scores = new ArrayList<>();
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Student(Name name, ID id, List<Group> groups, Map<Assessment, Score> scores, Set<Tag> tags) {
-        requireAllNonNull(name, id, groups, scores, tags);
+    public Student(Name name, ID id, Set<Tag> tags) {
+        requireAllNonNull(name, id, tags);
         this.name = name;
         this.id = id;
-        this.groups.addAll(groups);
-        this.scores.putAll(scores);
         this.tags.addAll(tags);
+    }
+
+    public void addScore(Score score) {
+        if (scores.contains(score)) {
+            return;
+        }
+        scores.add(score);
+    }
+
+    public void addGroup(Group group) {
+        if (groups.contains(group)) {
+            return;
+        }
+        groups.add(group);
     }
 
     public Name getName() {
@@ -46,6 +55,10 @@ public class Student {
 
     public ID getId() {
         return id;
+    }
+
+    public void removeScore(Score score) {
+        scores.remove(score);
     }
 
     /**
@@ -57,11 +70,11 @@ public class Student {
     }
 
     /**
-     * Returns an immutable map of assessment scores, which throws {@code UnsupportedOperationException}
+     * Returns an immutable list of scores, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Map<Assessment, Score> getScores() {
-        return Collections.unmodifiableMap(scores);
+    public List<Score> getScores() {
+        return Collections.unmodifiableList(scores);
     }
 
     /**
@@ -127,7 +140,7 @@ public class Student {
             groups.forEach(builder::append);
         }
 
-        Map<Assessment, Score> scores = getScores();
+        List<Score> scores = getScores();
         if (!scores.isEmpty()) {
             builder.append("; Assessment Scores: ")
                     .append(scores);

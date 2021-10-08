@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import seedu.address.model.student.exceptions.AssessmentNotFoundException;
 import seedu.address.model.student.exceptions.DuplicateAssessmentException;
@@ -96,6 +97,20 @@ public class AssessmentList {
         }
 
         Collections.copy(this.assessments, assessments);
+    }
+
+    /**
+     * Retrieves the {@code Assessment} with the provided name.
+     */
+    public Optional<Assessment> getAssessment(String assessmentName) {
+        requireNonNull(assessmentName);
+        Assessment result = null;
+        for (Assessment assessment : assessments) {
+            if (assessment.getName().equals(assessmentName)) {
+                result = assessment;
+            }
+        }
+        return Optional.ofNullable(result);
     }
 
     @Override
