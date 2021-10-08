@@ -45,10 +45,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         ID id = ParserUtil.parseID(argMultimap.getValue(PREFIX_ID).get());
 
         List<Group> groupList = ParserUtil.parseGroups(argMultimap.getAllValues(PREFIX_GROUP));
-        Map<Assessment, Score> emptyScores = new HashMap<>();
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Student student = new Student(name, id, groupList, emptyScores, tagList);
+        Student student = new Student(name, id, tagList);
+
+        groupList.forEach(group -> group.addStudent(student));
 
         return new AddCommand(student);
     }

@@ -11,7 +11,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -22,6 +21,7 @@ import seedu.address.model.student.NameContainsKeywordsPredicate;
 import seedu.address.model.student.Score;
 import seedu.address.model.student.Student;
 import seedu.address.testutil.EditStudentDescriptorBuilder;
+import seedu.address.testutil.TypicalPersons;
 
 /**
  * Contains helper methods for testing commands.
@@ -34,14 +34,16 @@ public class CommandTestUtil {
     public static final String VALID_ID_BOB = "E0639293";
     public static final String VALID_GROUP_TUTORIAL = "T08D";
     public static final String VALID_GROUP_RECITATION = "R07B";
-    public static final String VALID_ASSESSMENT_AMY = "P01";
-    public static final String VALID_ASSESSMENT_BOB = "M01";
+    public static final String VALID_NAME_PATH_1 = "P01";
+    public static final String VALID_NAME_MISSION_1 = "M01";
+    public static final Assessment VALID_ASSESSMENT_PATH_1 = new Assessment(VALID_NAME_PATH_1);
+    public static final Assessment VALID_ASSESSMENT_MISSION_1 = new Assessment(VALID_NAME_MISSION_1);
     public static final String VALID_SCORE_AMY = "100";
     public static final String VALID_SCORE_BOB = "66.6";
-    public static final Map<Assessment, Score> VALID_SCORES_AMY =
-            Map.of(new Assessment(VALID_ASSESSMENT_AMY), new Score(VALID_SCORE_AMY));
-    public static final Map<Assessment, Score> VALID_SCORES_BOB =
-            Map.of(new Assessment(VALID_ASSESSMENT_BOB), new Score(VALID_SCORE_BOB));
+    public static final List<Score> VALID_SCORES_AMY = Arrays.asList(
+            Score.updateScore(VALID_ASSESSMENT_PATH_1, TypicalPersons.AMY, VALID_SCORE_AMY));
+    public static final List<Score> VALID_SCORES_BOB = Arrays.asList(
+            Score.updateScore(VALID_ASSESSMENT_MISSION_1, TypicalPersons.BOB, VALID_SCORE_BOB));
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 

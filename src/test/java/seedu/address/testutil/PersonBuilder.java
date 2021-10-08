@@ -1,13 +1,12 @@
 package seedu.address.testutil;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import seedu.address.model.student.Assessment;
 import seedu.address.model.student.Group;
 import seedu.address.model.student.ID;
 import seedu.address.model.student.Name;
@@ -27,7 +26,7 @@ public class PersonBuilder {
     private Name name;
     private ID id;
     private List<Group> groups;
-    private Map<Assessment, Score> scores;
+    private List<Score> scores;
     private Set<Tag> tags;
 
     /**
@@ -37,7 +36,7 @@ public class PersonBuilder {
         name = new Name(DEFAULT_NAME);
         id = new ID(DEFAULT_ID);
         groups = new ArrayList<>();
-        scores = new HashMap<>();
+        scores = new ArrayList<>();
         tags = new HashSet<>();
     }
 
@@ -48,7 +47,7 @@ public class PersonBuilder {
         name = studentToCopy.getName();
         id = studentToCopy.getId();
         groups = new ArrayList<>(studentToCopy.getGroups());
-        scores = new HashMap<>(studentToCopy.getScores());
+        scores = new ArrayList<>(studentToCopy.getScores());
         tags = new HashSet<>(studentToCopy.getTags());
     }
 
@@ -72,14 +71,17 @@ public class PersonBuilder {
      * Parses the {@code groups} into a {@code List<Group} and set it to the {@code Student} that we are building.
      */
     public PersonBuilder withGroups(String... groups) {
-        this.groups = SampleDataUtil.getGroupList(groups);
+        this.groups = Arrays.stream(groups)
+                .map(Group::new)
+                .collect(Collectors.toList());
+
         return this;
     }
 
     /**
      * Sets the {@code scores} of the {@code Student} that we are building.
      */
-    public PersonBuilder withScores(Map<Assessment, Score> scores) {
+    public PersonBuilder withScores(List<Score> scores) {
         this.scores = scores;
         return this;
     }
@@ -93,7 +95,10 @@ public class PersonBuilder {
     }
 
     public Student build() {
-        return new Student(name, id, groups, scores, tags);
+        Student newStudent = new Student(name, id, tags);
+        groups.forEach(newStudent::addGroup);
+        scores.forEach(score -> Score.updateScore(score.getAssessment(), newStudent, score.getScore()));
+        return newStudent;
     }
 
 }

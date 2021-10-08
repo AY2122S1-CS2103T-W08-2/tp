@@ -54,18 +54,18 @@ public class ParserUtil {
     }
 
     /**
-      * Parses a {@code String score} into a {@code Score}.
-      * Leading and trailing whitespaces will be trimmed.
+      * Parses a {@code String score} and throws a ParseException if the format is invalid.
+      * Returns the score with leading and trailing whitespaces trimmed.
       *
       * @throws ParseException if the given {@code score} is invalid.
       */
-    public static Score parseScore(String score) throws ParseException {
+    public static String parseScore(String score) throws ParseException {
         requireNonNull(score);
         String trimmedScore = score.trim();
         if (!Score.isValidScore(trimmedScore)) {
             throw new ParseException(Score.MESSAGE_CONSTRAINTS);
         }
-        return new Score(trimmedScore);
+        return trimmedScore;
     }
 
     /**

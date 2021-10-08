@@ -7,17 +7,22 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+
 public class ScoreTest {
 
     @Test
-    public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Score(null));
+    public void updateScore_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> Score.updateScore(null, null, null));
     }
 
     @Test
-    public void constructor_invalidScore_throwsIllegalArgumentException() {
+    public void updateScore_invalidScore_throwsIllegalArgumentException() {
         String invalidScore = "";
-        assertThrows(IllegalArgumentException.class, () -> new Score(invalidScore));
+        assertThrows(IllegalArgumentException.class, () -> Score.updateScore(
+                new Assessment("a"),
+                new Student(new Name("a"), new ID("e1234567"), new HashSet<>()),
+                invalidScore));
     }
 
     @Test

@@ -10,13 +10,13 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.student.Group;
 
 public class JsonAdaptedGroupTest {
-    private static final String VALID_GROUP = BENSON.getGroups().get(0).value;
-    private static final String INVALID_GROUP = "5";
+    private static final String VALID_GROUP = "T01A";
+    private static final String INVALID_GROUP = " ";
 
     @Test
     public void toModelType_validGroupDetails_returnsGroup() throws Exception {
         JsonAdaptedGroup group = new JsonAdaptedGroup(VALID_GROUP);
-        assertEquals(BENSON.getGroups().get(0), group.toModelType());
+        assertEquals(new Group(VALID_GROUP), group.toModelType());
     }
 
     @Test

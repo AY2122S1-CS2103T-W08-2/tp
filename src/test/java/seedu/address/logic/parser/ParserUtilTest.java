@@ -93,16 +93,14 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseScore_validValueWithoutWhitespace_returnsScore() throws Exception {
-        Score expectedScore = new Score(VALID_SCORE);
-        assertEquals(expectedScore, ParserUtil.parseScore(VALID_SCORE));
+    public void parseScore_validValueWithoutWhitespace_returnsUnchangedString() throws Exception {
+        assertEquals(VALID_SCORE, ParserUtil.parseScore(VALID_SCORE));
     }
 
     @Test
-    public void parseScore_validValueWithWhitespace_returnsTrimmedScore() throws Exception {
+    public void parseScore_validValueWithWhitespace_returnsTrimmedString() throws Exception {
         String scoreWithWhitespace = WHITESPACE + VALID_SCORE + WHITESPACE;
-        Score expectedScore = new Score(VALID_SCORE);
-        assertEquals(expectedScore, ParserUtil.parseScore(scoreWithWhitespace));
+        assertEquals(VALID_SCORE, ParserUtil.parseScore(scoreWithWhitespace));
     }
 
     @Test

@@ -40,7 +40,7 @@ public class AssessmentListTest {
     @Test
     public void contains_assessmentWithSameNameInList_returnsTrue() {
         assessments.add(PATH_01);
-        assertTrue(assessments.contains(new Assessment(PATH_01.value)));
+        assertTrue(assessments.contains(new Assessment(PATH_01.getName())));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class AssessmentListTest {
     @Test
     public void setAssessment_editedAssessmentHasSameName_success() {
         assessments.add(PATH_01);
-        Assessment editedPath01 = new Assessment(PATH_01.value);
+        Assessment editedPath01 = new Assessment(PATH_01.getName());
         assessments.setAssessment(PATH_01, editedPath01);
         AssessmentList expectedAssessmentList = new AssessmentList();
         expectedAssessmentList.add(editedPath01);

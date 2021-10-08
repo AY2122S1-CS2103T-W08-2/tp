@@ -26,6 +26,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
@@ -45,7 +46,7 @@ public class AddCommandParserTest {
     public void parse_allFieldsPresent_success() {
         Student expectedStudent = new PersonBuilder(BOB)
                 .withGroups(VALID_GROUP_TUTORIAL)
-                .withScores(new HashMap<>())
+                .withScores(new ArrayList<>())
                 .withTags(VALID_TAG_FRIEND).build();
 
         // whitespace only preamble
@@ -62,7 +63,7 @@ public class AddCommandParserTest {
 
         // multiple groups - all accepted
         Student expectedStudentMultipleGroups = new PersonBuilder(BOB)
-                .withScores(new HashMap<>())
+                .withScores(new ArrayList<>())
                 .withGroups(VALID_GROUP_TUTORIAL, VALID_GROUP_RECITATION)
                 .withTags(VALID_TAG_FRIEND).build();
         assertParseSuccess(parser, NAME_DESC_BOB + ID_DESC_BOB + GROUP_DESC_TUTORIAL + GROUP_DESC_RECITATION
@@ -70,7 +71,7 @@ public class AddCommandParserTest {
 
         // multiple tags - all accepted
         Student expectedStudentMultipleTags = new PersonBuilder(BOB)
-                .withScores(new HashMap<>())
+                .withScores(new ArrayList<>())
                 .withGroups(VALID_GROUP_TUTORIAL)
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         assertParseSuccess(parser, NAME_DESC_BOB + ID_DESC_BOB + GROUP_DESC_TUTORIAL
@@ -80,12 +81,12 @@ public class AddCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Student expectedStudent = new PersonBuilder(AMY).withTags().withScores(new HashMap<>()).build();
+        Student expectedStudent = new PersonBuilder(AMY).withTags().withScores(new ArrayList<>()).build();
         assertParseSuccess(parser, NAME_DESC_AMY + ID_DESC_AMY + GROUP_DESC_TUTORIAL,
                 new AddCommand(expectedStudent));
 
         // zero groups
-        Student expectedStudentWithNoGroups = new PersonBuilder(AMY).withScores(new HashMap<>())
+        Student expectedStudentWithNoGroups = new PersonBuilder(AMY).withScores(new ArrayList<>())
                 .withGroups().build();
         assertParseSuccess(parser, NAME_DESC_AMY + ID_DESC_AMY + TAG_DESC_FRIEND,
                 new AddCommand(expectedStudentWithNoGroups));

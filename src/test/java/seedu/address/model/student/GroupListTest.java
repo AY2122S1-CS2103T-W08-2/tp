@@ -40,7 +40,7 @@ public class GroupListTest {
     @Test
     public void contains_groupWithSameNameInList_returnsTrue() {
         groups.add(TUTORIAL);
-        assertTrue(groups.contains(new Group(TUTORIAL.value)));
+        assertTrue(groups.contains(new Group(TUTORIAL.getName())));
     }
 
     @Test
@@ -84,7 +84,7 @@ public class GroupListTest {
     @Test
     public void setGroup_editedGroupHasSameName_success() {
         groups.add(TUTORIAL);
-        Group editedPath01 = new Group(TUTORIAL.value);
+        Group editedPath01 = new Group(TUTORIAL.getName());
         groups.setGroup(TUTORIAL, editedPath01);
         GroupList expectedGroupList = new GroupList();
         expectedGroupList.add(editedPath01);

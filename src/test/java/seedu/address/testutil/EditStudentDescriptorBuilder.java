@@ -71,7 +71,7 @@ public class EditStudentDescriptorBuilder {
     /**
      * Sets the {@code scores} of the {@code EditStudentDescriptor} that we are building.
      */
-    public EditStudentDescriptorBuilder withScores(Map<Assessment, Score> scores) {
+    public EditStudentDescriptorBuilder withScores(List<Score> scores) {
         descriptor.setScores(scores);
         return this;
     }

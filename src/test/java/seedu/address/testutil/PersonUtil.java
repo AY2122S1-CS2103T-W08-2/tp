@@ -34,7 +34,7 @@ public class PersonUtil {
         sb.append(PREFIX_NAME + student.getName().fullName + " ");
         sb.append(PREFIX_ID + student.getId().value + " ");
         student.getGroups().stream().forEach(
-            s -> sb.append(PREFIX_GROUP + s.value + " ")
+            s -> sb.append(PREFIX_GROUP + s.getName() + " ")
         );
         student.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
@@ -54,7 +54,7 @@ public class PersonUtil {
             if (groups.isEmpty()) {
                 sb.append(PREFIX_GROUP);
             } else {
-                groups.forEach(s -> sb.append(PREFIX_GROUP).append(s.value).append(" "));
+                groups.forEach(s -> sb.append(PREFIX_GROUP).append(s.getName()).append(" "));
             }
         }
         if (descriptor.getTags().isPresent()) {

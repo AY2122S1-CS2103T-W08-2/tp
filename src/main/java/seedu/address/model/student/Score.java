@@ -33,7 +33,7 @@ public class Score {
     /**
      * Factory method for creating a {@code Score} associated with {@code student} and {@code assessment}.
      */
-    public static void updateScore(Assessment assessment, Student student, String score) {
+    public static Score updateScore(Assessment assessment, Student student, String score) {
         requireAllNonNull(assessment, student, score);
         checkArgument(isValidScore(score), MESSAGE_CONSTRAINTS);
 
@@ -41,7 +41,7 @@ public class Score {
         for (Score assessmentScore : assessment.getScores()) {
             if (assessmentScore.getStudent().isSameStudent(student)) {
                 assessmentScore.setScore(score);
-                return;
+                return assessmentScore;
             }
         }
 
@@ -49,6 +49,7 @@ public class Score {
         Score newScore = new Score(assessment, student, score);
         student.addScore(newScore);
         assessment.addScore(newScore);
+        return newScore;
     }
 
     private void setScore(String score) {

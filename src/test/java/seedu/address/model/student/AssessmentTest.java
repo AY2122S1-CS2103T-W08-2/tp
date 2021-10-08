@@ -39,9 +39,4 @@ public class AssessmentTest {
         assertTrue(Assessment.isValidAssessment("P01")); // uppercase type
         assertTrue(Assessment.isValidAssessment("p01")); // lowercase type
     }
-
-    @Test
-    public void reformatAssessment() {
-        assertEquals("P01", Assessment.reformatAssessment("p01"));
-    }
 }

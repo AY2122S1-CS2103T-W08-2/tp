@@ -13,18 +13,18 @@ import seedu.address.model.student.Assessment;
 
 public class JsonAdaptedAssessmentTest {
     // TODO: Make TypicalAssessments, then test with those
-    private static final String VALID_ASSESSMENT = BENSON.getScores().keySet().iterator().next().value;
-    private static final String INVALID_ASSESSMENT = "5";
+    private static final String VALID_ASSESSMENT = "P01";
+    private static final String INVALID_ASSESSMENT = " ";
 
     @Test
     public void toModelType_validAssessmentDetails_returnsGroup() throws Exception {
-        JsonAdaptedAssessment assessment = new JsonAdaptedAssessment(VALID_ASSESSMENT, new HashMap<>());
+        JsonAdaptedAssessment assessment = new JsonAdaptedAssessment(VALID_ASSESSMENT);
         assertEquals(new Assessment(VALID_ASSESSMENT), assessment.toModelType());
     }
 
     @Test
     public void toModelType_invalidAssessmentName_throwsIllegalValueException() {
-        JsonAdaptedAssessment assessment = new JsonAdaptedAssessment(INVALID_ASSESSMENT, new HashMap<>());
+        JsonAdaptedAssessment assessment = new JsonAdaptedAssessment(INVALID_ASSESSMENT);
         String expectedMessage = Assessment.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, assessment::toModelType);
     }
