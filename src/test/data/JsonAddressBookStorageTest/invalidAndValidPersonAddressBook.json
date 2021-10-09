@@ -1,13 +1,26 @@
 {
-  "persons": [ {
+  "students": [ {
     "name": "Valid Person",
-    "phone": "9482424",
-    "email": "hans@example.com",
-    "address": "4th street"
+    "id": "e1234567",
+    "groups": [ "T01A", "R01A" ],
+    "assessments": [ "P01" ],
+    "tagged": [ "Friends" ]
   }, {
-    "name": "Person With Invalid Phone Field",
-    "phone": "948asdf2424",
-    "email": "hans@example.com",
-    "address": "4th street"
+    "name": "Person With Invalid ID",
+    "id": "e123456",
+    "groups": [ ],
+    "assessments": [ ],
+    "tagged": [ ]
+  } ],
+  "groups": [ {
+    "name": "T01A"
+  }, {
+    "name": "R01A"
+  } ],
+  "assessments": [ {
+    "name": "P01",
+    "scores": {
+      "e1234567":  "100"
+    }
   } ]
 }

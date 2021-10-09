@@ -35,13 +35,24 @@ public class AddressBookParser {
      * @throws ParseException if the user input does not conform the expected format
      */
     public Command parseCommand(String userInput) throws ParseException {
+        boolean isTwoWordCommand = false;
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
-        final String commandWord = matcher.group("commandWord");
-        final String arguments = matcher.group("arguments");
+        String commandWord = matcher.group("commandWord");
+        String arguments = matcher.group("arguments");
+        if ((arguments.length() != 0) && (!arguments.startsWith(" -"))) {
+            isTwoWordCommand = true;
+            if (Character.isDigit(arguments.charAt(1))) {
+                isTwoWordCommand = false;
+            }
+        }
+        if (isTwoWordCommand) {
+            commandWord = convertFormat(commandWord, arguments);
+            arguments = convertFormatArguments(arguments);
+        }
         switch (commandWord) {
 
         case AddCommand.COMMAND_WORD:
@@ -70,6 +81,45 @@ public class AddressBookParser {
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    /**
+     * Removes second word of command from arguments.
+     *
+     * @param arguments arguments to format.
+     * @return formatted arguments.
+     */
+    private String convertFormatArguments(String arguments) {
+        int index = 0;
+        if (arguments.contains("-")) {
+            index = arguments.indexOf("-");
+        }
+        if (index == 0) {
+            return null;
+        } else {
+            String argumentsFormatted = arguments.substring(index - 1);
+            return argumentsFormatted;
+        }
+    }
+
+    /**
+     * Converts commandWord to the two word format and retrieves second word from arguments.
+     *
+     * @param commandWord commandWord to format.
+     * @param arguments arguments to retrieve second half of commandWord from.
+     * @return formatted commandWord.
+     */
+    private String convertFormat(String commandWord, String arguments) {
+        int index = 0;
+        if (arguments.contains("-")) {
+            index = arguments.indexOf("-");
+        }
+        if (index == 0) {
+            return commandWord + arguments;
+        } else {
+            String commandWordPartTwo = commandWord + arguments.substring(0, index - 1);
+            return commandWordPartTwo;
         }
     }
 

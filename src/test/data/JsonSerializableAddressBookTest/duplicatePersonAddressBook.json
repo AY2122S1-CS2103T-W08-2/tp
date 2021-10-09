@@ -1,14 +1,26 @@
 {
-  "persons": [ {
-    "name": "Alice Pauline",
-    "phone": "94351253",
-    "email": "alice@example.com",
-    "address": "123, Jurong West Ave 6, #08-111",
-    "tagged": [ "friends" ]
+  "students": [ {
+    "name": "Valid Person",
+    "id": "e1234567",
+    "groups": [ "T01A", "R01A" ],
+    "assessments": [ "P01A" ],
+    "tagged": [ "Friends" ]
   }, {
-    "name": "Alice Pauline",
-    "phone": "94351253",
-    "email": "pauline@example.com",
-    "address": "4th street"
+    "name": "Valid Person",
+    "id": "e1234567",
+    "groups": [ "T01A", "R01A" ],
+    "assessments": [ "P01A" ],
+    "tagged": [ "Friends" ]
+  } ],
+  "groups": [ {
+    "name": "T01A"
+  }, {
+    "name": "R01A"
+  } ],
+  "assessments": [ {
+    "name": "P01",
+    "scores": {
+      "e1234567":  "100"
+    }
   } ]
 }
