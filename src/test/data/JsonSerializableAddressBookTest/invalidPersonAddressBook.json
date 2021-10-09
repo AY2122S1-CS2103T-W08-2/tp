@@ -1,8 +1,20 @@
 {
-  "persons": [ {
-    "name": "Hans Muster",
-    "phone": "9482424",
-    "email": "invalid@email!3e",
-    "address": "4th street"
+  "students": [ {
+    "name": "Person with invalid ID",
+    "id": "e123456",
+    "groups": [ "T01A", "R01A" ],
+    "assessments": [ "P01A" ],
+    "tagged": [ "Friends" ]
+  } ],
+  "groups": [ {
+    "name": "T01A"
+  }, {
+    "name": "R01A"
+  } ],
+  "assessments": [ {
+    "name": "P01",
+    "scores": {
+      "e1234567":  "100"
+    }
   } ]
 }
