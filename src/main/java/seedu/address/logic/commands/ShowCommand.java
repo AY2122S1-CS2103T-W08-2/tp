@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.*;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.student.Assessment;
@@ -29,6 +30,7 @@ import seedu.address.model.student.Name;
 import seedu.address.model.student.NameEqualsPredicate;
 import seedu.address.model.student.Student;
 import seedu.address.model.student.StudentStatistics;
+import seedu.address.commons.util.AdvCandleStickChart;
 
 /**
  * Shows information of a student or an assessment.
@@ -155,7 +157,7 @@ public class ShowCommand extends Command {
 
         Info info = new Info(matchedStudent);
         StudentStatistics statistics = new StudentStatistics(matchedStudent);
-        return new CommandResult(MESSAGE_SUCCESS, info, statistics.toLineChart(), savePath);
+        return new CommandResult(MESSAGE_SUCCESS, info, new AdvCandleStickChart(), savePath);
     }
 
     /**

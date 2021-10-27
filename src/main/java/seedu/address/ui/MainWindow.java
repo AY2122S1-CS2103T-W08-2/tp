@@ -20,6 +20,8 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
+
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.FileUtil;
@@ -224,6 +226,15 @@ public class MainWindow extends UiPart<Stage> {
                 Chart chart = commandResult.getChart();
                 assert chart != null;
                 graphDisplay.setChart(chart);
+                if (commandResult.hasSavePath()) {
+                    saveGraph(commandResult.getSavePath());
+                }
+            }
+
+            if (commandResult.hasPane()) {
+                Pane pane = commandResult.getPane();
+                assert pane != null;
+                graphDisplay.setPane(pane);
                 if (commandResult.hasSavePath()) {
                     saveGraph(commandResult.getSavePath());
                 }

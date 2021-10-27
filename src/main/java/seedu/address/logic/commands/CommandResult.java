@@ -6,7 +6,8 @@ import static seedu.address.logic.commands.ShowCommand.Info;
 import java.nio.file.Path;
 import java.util.Objects;
 
-import javafx.scene.chart.Chart;
+import javafx.scene.layout.Pane;
+import javafx.scene.chart.*;
 
 /**
  * Represents the result of a command execution.
@@ -19,6 +20,8 @@ public class CommandResult {
 
     private final Chart chart;
 
+    private final Pane pane;
+
     private final Path savePath;
 
     /** Help information should be shown to the user. */
@@ -27,6 +30,20 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields.
+     */
+    public CommandResult(String feedbackToUser, Info info, Pane pane, Path savePath) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.info = info;
+        this.pane = pane;
+        this.chart = null;
+        this.savePath = savePath;
+        this.showHelp = false;
+        this.exit = false;
+    }
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -34,6 +51,7 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.info = info;
         this.chart = chart;
+        this.pane = null;
         this.savePath = savePath;
         this.showHelp = showHelp;
         this.exit = exit;
@@ -102,6 +120,9 @@ public class CommandResult {
     public boolean isExit() {
         return exit;
     }
+
+    public boolean hasPane() {return pane != null; }
+    public Pane getPane() {return pane; }
 
     @Override
     public boolean equals(Object other) {
