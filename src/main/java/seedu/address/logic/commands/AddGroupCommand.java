@@ -45,7 +45,8 @@ public class AddGroupCommand extends Command {
     public static final String MESSAGE_DUPLICATE_GROUP = "This group already exists in the application.";
     public static final String MESSAGE_DUPLICATE_STUDENT =
             "The student \"%1$s\" needs to be allocated manually using ID due to duplicate naming.";
-    public static final String MESSAGE_DUPLICATE_STUDENT_IN_GROUP = "The student \"%1$s\" already exists in the group.";
+    public static final String MESSAGE_DUPLICATE_STUDENT_IN_GROUP =
+            "The student \"%1$s\" (%2$s) was specified more than once.";
 
     private final Group toAdd;
     private final List<AllocDescriptor> allocDescriptors;
@@ -92,7 +93,8 @@ public class AddGroupCommand extends Command {
             }
 
             if (toAdd.hasStudent(studentToEdit.getId())) {
-                throw new CommandException(String.format(MESSAGE_DUPLICATE_STUDENT_IN_GROUP, studentToEdit.getName()));
+                throw new CommandException(String.format(MESSAGE_DUPLICATE_STUDENT_IN_GROUP,
+                        studentToEdit.getName(), studentToEdit.getId()));
             }
 
             Student editedStudent = createEditedStudent(studentToEdit, allocDescriptor);
