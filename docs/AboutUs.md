@@ -51,7 +51,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/leonghongfai.png" width="200px">
 
 [[github](http://github.com/leonghongfai)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/leonghongfai.md)]
 
 * Role: Developer
 * Responsibilities: Integration + Deliverables and Deadlines
