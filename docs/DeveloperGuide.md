@@ -206,11 +206,11 @@ The `addstudent` feature adds a student with the provided name and ID into the d
     * If the provided group does not exist, a new group will be added, and the student will be added into that group subsequently.
 5. A new `Student` object is created with the given name, ID, groups, and tags.
 
-The following activity diagram summarizes what happens when the user inputs an add student command:
+The following activity diagram summarizes what happens when the user inputs an `addstudent` command:
 
 ![AddStudentActivityDiagram](images/AddStudentActivityDiagram.png)
 
-The following sequence diagram shows how the add student operation works:
+The following sequence diagram shows how the `addstudent` operation works:
 
 ![AddStudentSequenceDiagram](images/AddStudentSequenceDiagram.png)
 
