@@ -5,7 +5,7 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":AddCommandParser" as AddCommandParser LOGIC_COLOR
-participant "John Doe:Student" as Student LOGIC_COLOR
+participant "Jonas:Student" as Student LOGIC_COLOR
 participant "addCommand\n:AddCommand" as AddCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
@@ -14,10 +14,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("add student \n-n John Doe \n-i E0123456")
+[-> LogicManager : execute("addstudent \n-n Jonas \n-i E0123456")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand(\n"add student -n John Doe \n-i E0123456")
+LogicManager -> AddressBookParser : parseCommand(\n"addstudent -n Jonas \n-i E0123456")
 activate AddressBookParser
 
 create AddCommandParser
@@ -27,18 +27,18 @@ activate AddCommandParser
 AddCommandParser --> AddressBookParser
 deactivate AddCommandParser
 
-AddressBookParser -> AddCommandParser : parse(" -n John Doe\n -i E0123456")
+AddressBookParser -> AddCommandParser : parse(" -n Jonas\n -i E0123456")
 activate AddCommandParser
 
 create Student
 AddCommandParser -> Student
 activate Student
 
-Student --> AddCommandParser : John Doe
+Student --> AddCommandParser : Jonas
 deactivate Student
 
 create AddCommand
-AddCommandParser -> AddCommand : AddCommand(John Doe)
+AddCommandParser -> AddCommand : AddCommand(Jonas)
 activate AddCommand
 
 AddCommand --> AddCommandParser : addCommand
@@ -56,7 +56,7 @@ deactivate AddressBookParser
 LogicManager -> AddCommand : execute()
 activate AddCommand
 
-AddCommand -> Model : addStudent(John Doe)
+AddCommand -> Model : addStudent(Jonas)
 activate Model
 
 Model --> AddCommand

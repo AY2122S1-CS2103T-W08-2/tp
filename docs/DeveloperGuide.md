@@ -195,25 +195,20 @@ The user needs to provide the number of `Groups`, `Assessments`, and `Tags` sinc
 
 ### Add Student : `addstudent`
 
-The add student feature adds a student with the provided name and NUSNET ID into the database. If the student comes with optionally specified groups and tags, these fields will be added accordingly.
+The `addstudent` feature adds a student with the provided name and ID into the database. If the student comes with optionally specified groups and tags, these fields will be added accordingly.
 
-#### AddCommand class
-The `addstudent` mechanism is facilitated by the `AddCommand` class which extends the `Command` class. The `AddCommand` class overrides the `execute()` method in `Command`. In this implementation,
-the method first checks if the `Student` object supplied as parameters is non-null. Then, it checks if the `Student` already exists in the database.
-If this `Student` already exists, a `CommandException` will be thrown, telling the user that a duplicate `Student` is being added. If
-the `Student` does not exist in the database yet, the `Model#addStudent()` method is called.
-
-#### AddCommandParser class
-The `AddCommandParser` class implements the `Parser<AddCommand>` interface. The `parse()` method checks for the presence of the compulsory prefixes corresponding to the name and NUSNET id of the `Student`, namely `-n` and `-i`.
-It also checks for the presence of the optional group and tag prefixes, namely `-g` and `-t`.
-It then retrieves the characters that follow each prefix and allocates them to the fields the `Student` object has accordingly.
-
-In the case where the compulsory prefixes `-n` and `-i` are not present, a `ParseException` is thrown, prompting the user that the wrong command format has been used.
+### How the `addstudent` feature works
+1. The user specifies the student name, ID, and if applicable, the groups and tags the student has too.
+2. If the name or ID is not provided, the user will be prompted to enter them via an error message.
+3. The ID is cross-referenced with the current students in the database, and an error is thrown if the student to add has the same ID as a pre-existing student.
+4. If the student to add has a unique ID, the groups, if provided, will be parsed individually. 
+    * If the provided group exists, the student will be added into that group.
+    * If the provided group does not exist, a new group will be added, and the student will be added into that group subsequently.
+5. A new `Student` object is created with the given name, ID, groups, and tags.
 
 The following activity diagram summarizes what happens when the user inputs an add student command:
 
 ![AddStudentActivityDiagram](images/AddStudentActivityDiagram.png)
-
 
 The following sequence diagram shows how the add student operation works:
 
