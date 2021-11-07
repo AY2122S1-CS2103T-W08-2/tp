@@ -1,0 +1,40 @@
+@startuml
+!include style.puml
+
+mainframe **sd** show statistics from model\t
+
+box Logic LOGIC_COLOR_T1
+participant "showCommand\n:ShowCommand" as ShowCommand LOGIC_COLOR
+participant "info\n:Info" as Info LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant "studentStatistics\n:StudentStatistics" as StudentStatistics MODEL_COLOR
+end box
+
+ShowCommand -> ShowCommand : createStudentPredicate()
+activate ShowCommand
+
+ShowCommand --> ShowCommand : predicate
+deactivate ShowCommand
+
+ShowCommand -> Model : updateFilteredStudentList(predicate)
+Model --> ShowCommand : matchedStudent
+
+create Info
+ShowCommand -> Info : Info(matchedStudent)
+activate Info
+
+Info --> ShowCommand : info
+deactivate Info
+
+create StudentStatistics
+ShowCommand -> StudentStatistics : StudentStatistics(matchedStudent)
+activate StudentStatistics
+
+StudentStatistics --> ShowCommand : studentStatistics
+deactivate StudentStatistics
+
+@enduml

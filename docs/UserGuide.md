@@ -369,10 +369,10 @@ Format: `import -f <file_path> [-g <number_of_group_columns>] [-a <number_of_ass
 * The first row of the CSV file needs to be headers for the respective columns.
 * The header for the assessment columns should the name of the assessment. For example, `Rune Trials`. The header for every other column does not matter.
 * Every row apart from the first represents a student.
-* The first two columns refer to the student’s name and NUSNET ID.
-* The next `<number_of_group_columns>` columns, refer to the student’s groups.
-* The next `<number_of_assessment_columns>` columns, refer to the student’s grade in the respective assessments.
-* The next `<number_of_tag_columns>` columns, refer to the student's tags.
+* The first two columns should contain the student’s name and NUSNET ID.
+* The next `<number_of_group_columns>` columns, should contain the student’s groups.
+* The next `<number_of_assessment_columns>` columns, should contain the student’s grade in the respective assessments.
+* The next `<number_of_tag_columns>` columns, should contain the student's tags.
 * The number of group columns, assessment columns, and tag columns are assumed to be 0 if they are not specified.
 
 <div markdown="block" class="alert alert-info">
@@ -508,6 +508,8 @@ Examples:
 ### Editing the data file
 
 Source Control data are saved as a JSON file `[JAR file location]/data/sourcecontrol.json`. Advanced users are welcome to update data directly by editing that data file.
+
+If you are adding groups or assessments to a student, make sure you also add the groups to the groupList, and the assessments to the assessmentList. Otherwise, the changes you made could be lost!
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, Source Control will discard all data and start with an empty data file at the next run.

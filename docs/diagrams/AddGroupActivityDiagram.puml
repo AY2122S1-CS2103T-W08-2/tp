@@ -1,20 +1,17 @@
 @startuml
 !include style.puml
 
-title Activity: Adding a new group
-
 start
-if () then ([group does not already exist])
+if () then ([group does not\n  already exist])
   :Add students to group <$rake> ;
-  if () then ([No exceptions occurred])
-    :Add group to application;
-    :Update individual students' groups;
+  if () then ([no exceptions occurred])
+    :Add group\nto database;
+    :Update group list\nof students;
   else ([else])
-    :Throw the CommandException ;
+    :Display an\nerror message;
   endif
 else ([group already exists])
-  :Throw a CommandException ;
-  stop
+  :Display an\nerror message;
 endif
 
 stop

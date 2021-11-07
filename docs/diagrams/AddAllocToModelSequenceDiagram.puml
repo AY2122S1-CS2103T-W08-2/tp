@@ -1,0 +1,36 @@
+@startuml
+!include style.puml
+
+mainframe **sd** add allocation to model\t
+
+box Logic LOGIC_COLOR_T1
+participant "addAllocCommand\n:AddAllocCommand" as AddAllocCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant "groupToEdit\n:Group" MODEL_COLOR
+end box
+
+AddAllocCommand -> Model : getGroupList()
+AddAllocCommand -> Model : getStudentList()
+
+AddAllocCommand -> AddAllocCommand : getAllocGroup()
+activate AddAllocCommand
+
+AddAllocCommand --> AddAllocCommand : groupToEdit
+deactivate AddAllocCommand
+
+'hidden arrow to add extra spacing
+Model -[hidden]->
+
+AddAllocCommand -> AddAllocCommand : getAllocStudents()
+activate AddAllocCommand
+
+AddAllocCommand --> AddAllocCommand : studentToEdit
+deactivate AddAllocCommand
+
+AddAllocCommand -> "groupToEdit\n:Group" : addStudent()
+AddAllocCommand -> Model : setStudent()
+
+@enduml

@@ -1,16 +1,15 @@
 @startuml
 !include style.puml
 
-title Activity: Adding students to a new group
+title: Add students to group
 
 start
-while () is ([has remaining students to add])
-  :Find matching students from student list;
-  if () then ([only 1 matching student found
-and student not already in group])
-    :Add student to group;
+while () is ([has remaining student(s) to add])
+  :Find matched student;
+  if () then (    [one matched student found\nand student not already in group])
+    :Add student\nto group;
   else ([else])
-    : Throw a CommandException ;
+    :Display an\nerror message;
     stop
   endif
 endwhile ([else])

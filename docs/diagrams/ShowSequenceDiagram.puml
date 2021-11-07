@@ -61,28 +61,7 @@ destroy SourceControlParser
 LogicManager -> ShowCommand : execute()
 activate ShowCommand
 
-ShowCommand -> ShowCommand : createStudentPredicate()
-activate ShowCommand
-
-ShowCommand --> ShowCommand : predicate
-deactivate ShowCommand
-
-ShowCommand -> Model : updateFilteredStudentList(predicate)
-Model --> ShowCommand : matchedStudent
-
-create Info
-ShowCommand -> Info : Info(matchedStudent)
-activate Info
-
-Info --> ShowCommand : info
-deactivate Info
-
-create StudentStatistics
-ShowCommand -> StudentStatistics : StudentStatistics(matchedStudent)
-activate StudentStatistics
-
-StudentStatistics --> ShowCommand : studentStatistics
-deactivate StudentStatistics
+ref over ShowCommand, Model : show statistics from model
 
 create CommandResult
 ShowCommand -> CommandResult

@@ -12,7 +12,6 @@ end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant "assessmentToEdit\n:Assessment" MODEL_COLOR
 end box
 
 [-> LogicManager : execute("addscore \n-a Midterm -n Van Nhi -s 95")
@@ -65,26 +64,7 @@ destroy SourceControlParser
 LogicManager -> AddScoreCommand : execute()
 activate AddScoreCommand
 
-AddScoreCommand -> Model : getAssessmentList()
-AddScoreCommand -> Model : getStudentList()
-
-AddScoreCommand -> AddScoreCommand : getToEditAssessment()
-activate AddScoreCommand
-
-AddScoreCommand --> AddScoreCommand : assessmentToEdit
-deactivate AddScoreCommand
-
-'hidden arrow to add extra spacing
-Model -[hidden]->
-
-AddScoreCommand -> AddScoreCommand : getToEditStudents()
-activate AddScoreCommand
-
-AddScoreCommand --> AddScoreCommand : studentToEdit
-deactivate AddScoreCommand
-
-AddScoreCommand -> "assessmentToEdit\n:Assessment" : setScore()
-AddScoreCommand -> Model : setStudent()
+ref over AddScoreCommand, Model : add score to model
 
 create CommandResult
 AddScoreCommand -> CommandResult

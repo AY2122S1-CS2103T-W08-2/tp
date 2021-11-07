@@ -1,25 +1,12 @@
 @startuml
+!include style.puml
 
 start
-
-:User executes an AddStudentCommand;
-
-if () then ([command is valid])
-	:Execute AddStudentCommand;
-	if() then ([Student does not exist in database])
-        :Create a new Student with given inputs;
-        :Add Student to database;
-        :Update UI with success message;
-
-	else ([else])
-        :Throw a CommandException;
-        :Update UI with error message;
-    endif
-else ([else])
-	:Throw a ParseException;
-	:Update UI with error message;
+if() then ([student does not\n    already exist])
+  :Add student\nto database;
+else ([student already exists])
+  :Display an\nerror message;
 endif
-
 stop
 
 @enduml

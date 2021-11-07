@@ -12,7 +12,6 @@ end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant "groupToEdit\n:Group" MODEL_COLOR
 end box
 
 [-> LogicManager : execute("addalloc \n-g T01A -n Zhiying")
@@ -64,26 +63,7 @@ destroy SourceControlParser
 LogicManager -> AddAllocCommand : execute()
 activate AddAllocCommand
 
-AddAllocCommand -> Model : getGroupList()
-AddAllocCommand -> Model : getStudentList()
-
-AddAllocCommand -> AddAllocCommand : getAllocGroup()
-activate AddAllocCommand
-
-AddAllocCommand --> AddAllocCommand : groupToEdit
-deactivate AddAllocCommand
-
-'hidden arrow to add extra spacing
-Model -[hidden]->
-
-AddAllocCommand -> AddAllocCommand : getAllocStudents()
-activate AddAllocCommand
-
-AddAllocCommand --> AddAllocCommand : studentToEdit
-deactivate AddAllocCommand
-
-AddAllocCommand -> "groupToEdit\n:Group" : addStudent()
-AddAllocCommand -> Model : setStudent()
+ref over AddAllocCommand, Model: add allocation to model
 
 create CommandResult
 AddAllocCommand -> CommandResult

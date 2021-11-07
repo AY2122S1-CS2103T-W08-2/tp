@@ -1,0 +1,34 @@
+@startuml
+!include style.puml
+
+start
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+if () then ([file path is valid])
+    :Read lines and assessment names;
+else ([else])
+    :Display an error message;
+    stop
+endif
+
+if () then ([assessment names are valid\n      and not duplicated])
+    :Make new assessments;
+else ([else])
+    :Display an error message;
+    stop
+endif
+
+while () is ([has remaining line(s) to read])
+	:Read student info;
+if () then ([all info is valid])
+    :Add student to database;
+else ([else])
+    :Display an error message;
+    stop
+endif
+endwhile ([else])
+
+:Overwrite sample database with new database;
+
+stop
+@enduml

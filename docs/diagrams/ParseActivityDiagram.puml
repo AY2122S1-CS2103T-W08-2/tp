@@ -1,32 +1,33 @@
 @startuml
+!include style.puml
+
 start
-:SourceControlParser parses command;
+:Parser parses command;
+:Command word and arguments are parsed;
 
-:Command word and arguments parsed;
-
-if () then ([Command word is valid])
+if () then ([command word is valid])
 else ([else])
-    :Throw ParseException;
-    stop
+  :Display an error message;
+  stop
 endif
 
-while () is ([Command word is an alias])
-    :Replace aliased command word with the default command word;
+while () is ([command word is an alias])
+  :Replace aliased command word\nwith default command word;
 endwhile ([else])
 
-if () then ([Command requires arguments])
-    :Parse arguments;
-    if () then ([Arguments are valid])
-        :Create the command;
-    else ([else])
-        :Throw ParseException;
-        stop
-    endif
+if () then ([command has arguments])
+  :Parse arguments;
+  if () then ([arguments are valid])
+    :Create command;
+  else ([else])
+    :Display an error message;
+    stop
+  endif
 else ([else])
-    :Create the command;
+    :Create command;
 endif
 
-:Execute the newly created command;
+:Execute created command;
 
 stop
 @enduml
