@@ -10,7 +10,7 @@ Source Control is a desktop application for CS1101S professors to manage the per
 Given below are my contributions to the project.
 
 * **New Feature** `addalloc`: Added the ability to add allocation
-    * PR [\#117](https://github.com/AY2122S1-CS2103T-W08-2/tp/pull/117)
+    * PR [\#117](https://git.io/JPAgf)
     * This feature is necessary for the target user to know which groups a student belongs to. It also serves as a follow-up feature of the add group feature.
     * This enhancement is the sole entrypoint for individual allocation of students to existing groups. The implementation was not trivial as a sub-class needed to be created to pass over the allocation information.
 
