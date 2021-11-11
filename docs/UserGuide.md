@@ -30,6 +30,7 @@ feel free to skip to the [command summary](#command-summary) and experiment with
 
 * [**Overview**](#)
 * [**Table of Contents**](#table-of-contents)
+* [**Using This Guide**](#using-this-guide)
 * [**Quick Start**](#quick-start)
 * [**Features**](#features)
   * [Notes on Command Format](#features)
@@ -65,6 +66,34 @@ feel free to skip to the [command summary](#command-summary) and experiment with
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+## **Using This Guide**
+
+There are a few symbols that are used throughout the guide. This section will bring you through each of these symbols and what they mean.
+
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes:**<br>
+Light blue blocks of text with the :information_source: symbol at the top (like this block) are notes.
+
+These include important supplementary information which may help you get a fuller picture of how Source Control operates.
+</div>
+
+<div markdown="block" class="alert alert-warning">:exclamation: 
+**Caution:**<br>
+Yellow blocks of text with the :exclamation: symbol at the top (like this block) are warnings.
+
+These include vital information that will help you avoid potential irreversible loss of data. 
+</div>
+
+<div markdown="block" class="alert alert-primary">
+:bulb: **Tips:**<br> 
+Blue blocks of text with the :bulb: symbol at the top (like this block) are tips.
+
+Tips are information that are not essential to the usage of Source Control, but instead provide you with a greater insight on how you can use Source Control more effectively.
+</div>
+
 
 <div style="page-break-after: always;"></div>
 
@@ -408,7 +437,8 @@ The similar applies for `<number_of_tag_columns>`.
 
 <div style="page-break-after: always;"></div>
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+<div markdown="block" class="alert alert-warning">:exclamation: 
+**Caution:**<br>
 The import command overwrites the current data with the newly imported data. Make sure you don't need the existing data before importing new data. 
 
 You can use the [`export`](#exporting-data--export) command (explained in the next section) to get a backup of the current data before importing new data.
@@ -455,7 +485,8 @@ Format: `export`
 
 Clears all existing data.
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+<div markdown="block" class="alert alert-warning">:exclamation: 
+**Caution:**<br>
 
 You can't undo this command! You can use the [`export`](#exporting-data--export) command to get a backup of the data before clearing.
 
@@ -543,7 +574,9 @@ Source Control data are saved as a JSON file `[JAR file location]/data/sourcecon
 
 If you are adding groups or assessments to a student, make sure you also add the groups to the group list, and the assessments to the assessment list. Otherwise, the changes you made could be lost!
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+<div markdown="block" class="alert alert-warning">:exclamation: 
+**Caution:**<br>
+
 If your changes to the data file makes its format invalid, Source Control will discard all data and start with an empty data file at the next run.
 </div>
 
