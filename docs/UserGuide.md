@@ -176,7 +176,7 @@ Tips are information that are not essential to the usage of Source Control, but 
 
 ### Adding a student : `addstudent`
 
-Adds a student into the database.
+Adds a student into the database, so that you can track the student's information and performance in Source Control.
 
 Format: `addstudent -n <student_name> -i <student_id> [-g <group_name>]... [-t <tag_name>]...`
 
@@ -198,7 +198,7 @@ Examples:
 
 ### Creating a new group : `addgroup`
 
-Creates a new group and adds students into the group.
+Creates a new group and adds students into the group, so that you can organise students into groups and track the group's performance in Source Control.
 
 Format: `addgroup -g <group_name> [(-n <student_name> | -i <student_id>)]...`
 
@@ -247,7 +247,7 @@ Examples:
 
 ### Creating a new assessment : `addassessment`
 
-Creates a new assessment in the database.
+Creates a new assessment in the database, so that you can add scores and analyse performance for the assessment.
 
 Format: `addassessment -a <assessment_name>`
 * The assessment should not already exist in database.
@@ -266,7 +266,7 @@ Examples:
 
 ### Adding a score : `addscore`
 
-Adds students' score for an existing assessment into the database.
+Adds a student's score for an existing assessment into the database.
 
 Format: `addscore -a <assessment_name> (-n <student_name> | -i <student_id>) -s <score>`
 * The assessment must already exist in database.
@@ -298,7 +298,7 @@ Format: `list`
 
 ### Searching for students : `search`
 
-Finds students who match the input keywords.
+Finds students who match the input keywords, so that you can look up students you want to see quickly.
 
 Format: `search (-n <student_name> | -i <student_id> | -g <group_name> | -t <tag>)`
 
@@ -332,6 +332,10 @@ Examples:
 ### Showing assessment result analysis : `show`
 
 Shows the in-depth data analysis of individual, group, or the cohort's performance for assessments.
+
+This allows you to compare an individual student or an individual group's performance across different assessments as well as across the cohort.
+Alternatively, if you choose to show data for a specific assessment, you can see the distribution of scores attained by the cohort.
+A chart and some summary statistics are provided as well.
 
 Format: `show (<index> | -n <student_name> | -i <student_id> | -g <group_name> | -a <assessment_name> ) [-f]`
 
@@ -371,7 +375,7 @@ Examples:
 
 ### Editing a student : `edit`
 
-Edits the information of an existing student.
+Edits the information of an existing student, so that student data is kept as up-to-date as possible.
 
 Format: `edit <index> [-n <student_name>] [-i <student_id>] [-g <group_name>]... [-t <tag>]...`
 
@@ -395,7 +399,7 @@ Examples:
 
 ### Deleting a student : `delete`
 
-Deletes the specified student from the student list.
+Deletes the specified student from the student list. This is irreversible and should only be done if the student is no longer in the module.
 
 Format: `delete <index>`
 
@@ -415,7 +419,7 @@ Examples:
 
 ### Importing data : `import`
 
-Loads data as specified in the provided CSV file.
+Loads data as specified in the provided CSV file. This allows you to import shared data from others who are using Source Control as well.
 
 Format: `import -f <file_path> [-g <number_of_group_columns>] [-a <number_of_assessment_columns>] [-t <number_of_tag_columns>]`
 
@@ -490,7 +494,7 @@ Format: `export`
 
 ### Clearing all data : `clear`
 
-Clears all existing data.
+Clears all existing data. This can be used to reset the application to its initial state (e.g. at the start of a new semester).
 
 <div markdown="block" class="alert alert-warning">:exclamation: 
 **Caution:**<br>
@@ -526,7 +530,7 @@ Format: `help`
 
 ### Accessing command history
 
-Retrieves past command lines input.
+Retrieves past command lines input, allowing for quick access to past commands so that you do not need to type them repeatedly.
 
 * This can be done using the up and down arrow keys.
 * Only successful command input would be recorded. Unsuccessful inputs which shows an error will not be saved.
@@ -539,7 +543,7 @@ Retrieves past command lines input.
 
 ### Setting customized aliases for commands : `alias`
 
-Sets up an alias that can be used instead of a command.
+Sets up an alias that can be used as a substitution for a command word, allowing for faster access to frequently used commands.
 
 Format: `alias -c <existing_command> -as <alias>`
 
