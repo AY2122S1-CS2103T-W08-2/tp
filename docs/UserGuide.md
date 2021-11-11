@@ -75,6 +75,7 @@ There are a few symbols that are used throughout the guide. This section will br
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes:**<br>
+
 Light blue blocks of text with the :information_source: symbol at the top (like this block) are notes.
 
 These include important supplementary information which may help you get a fuller picture of how Source Control operates.
@@ -82,6 +83,7 @@ These include important supplementary information which may help you get a fulle
 
 <div markdown="block" class="alert alert-warning">:exclamation: 
 **Caution:**<br>
+
 Yellow blocks of text with the :exclamation: symbol at the top (like this block) are warnings.
 
 These include vital information that will help you avoid potential irreversible loss of data. 
@@ -89,10 +91,14 @@ These include vital information that will help you avoid potential irreversible 
 
 <div markdown="block" class="alert alert-primary">
 :bulb: **Tips:**<br> 
+
 Blue blocks of text with the :bulb: symbol at the top (like this block) are tips.
 
 Tips are information that are not essential to the usage of Source Control, but instead provide you with a greater insight on how you can use Source Control more effectively.
 </div>
+
+[Return to Table of Contents](#table-of-contents)
+
 
 
 <div style="page-break-after: always;"></div>
@@ -439,6 +445,7 @@ The similar applies for `<number_of_tag_columns>`.
 
 <div markdown="block" class="alert alert-warning">:exclamation: 
 **Caution:**<br>
+
 The import command overwrites the current data with the newly imported data. Make sure you don't need the existing data before importing new data. 
 
 You can use the [`export`](#exporting-data--export) command (explained in the next section) to get a backup of the current data before importing new data.
