@@ -99,6 +99,8 @@ Tips are information that are not essential to the usage of Source Control, but 
 
 [Return to Table of Contents](#table-of-contents)
 
+<br>
+
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
@@ -471,6 +473,8 @@ Format: `import -f <file_path> [-g <number_of_group_columns>] [-a <number_of_ass
 * The next `<number_of_tag_columns>` columns, should contain the student's tags.
 * The number of group columns, assessment columns, and tag columns are assumed to be 0 if they are not specified.
 
+<div style="page-break-after: always;"></div>
+
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes:**<br>
 
@@ -558,6 +562,7 @@ Format: `exit`
 
 [Return to Table of Contents](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
 
 ### Viewing help : `help`
 
