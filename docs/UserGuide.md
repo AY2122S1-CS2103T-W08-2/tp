@@ -473,6 +473,8 @@ Format: `import -f <file_path> [-g <number_of_group_columns>] [-a <number_of_ass
 * The next `<number_of_tag_columns>` columns, should contain the student's tags.
 * The number of group columns, assessment columns, and tag columns are assumed to be 0 if they are not specified.
 
+<div style="page-break-after: always;"></div>
+
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes:**<br>
 
