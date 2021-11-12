@@ -34,29 +34,29 @@ feel free to skip to the [command summary](#command-summary) and experiment with
 * [**Quick Start**](#quick-start)
 * [**Features**](#features)
   * [Notes on Command Format](#features)
-  * Adding Data
+  * [**Adding Data**](#adding-data)
     * [Adding a student : `addstudent`](#adding-a-student--addstudent)
     * [Creating a new group : `addgroup`](#creating-a-new-group--addgroup)
     * [Adding a student into a group : `addalloc`](#adding-a-student-into-a-group--addalloc)
     * [Creating a new assessment : `addassessment`](#creating-a-new-assessment--addassessment)
     * [Adding a score : `addscore`](#adding-a-score--addscore)
-  * Searching Data
+  * [**Searching Data**](#searching-data)
     * [Listing all students : `list`](#listing-all-students--list)
     * [Searching for students : `search`](#searching-for-students--search)
-  * Analysing Data
+  * [**Analysing Data**](#analysing-data)
     * [Showing assessment result analysis : `show`](#showing-assessment-result-analysis--show)
-  * Editing Data
+  * [**Editing Data**](#editing-data)
     * [Editing a student : `edit`](#editing-a-student--edit)
     * [Deleting a student : `delete`](#deleting-a-student--delete)
-  * Importing and Exporting Data
+  * [**Importing and Exporting Data**](#importing-and-exporting-data)
     * [Importing data : `import`](#importing-data--import)
     * [Exporting data : `export`](#exporting-data--export)
-  * General Features
+  * [**General Features**](#general-features)
     * [Clearing all data : `clear`](#clearing-all-data--clear)
     * [Exiting the app : `exit`](#exiting-the-app--exit)
     * [Viewing help : `help`](#viewing-help--help)
     * [Accessing command history](#accessing-command-history)
-  * Advanced Features
+  * [**Advanced Features**](#advanced-features)
     * [Setting customized aliases for commands: `alias`](#setting-customized-aliases-for-commands--alias)
     * [Editing the data file](#editing-the-data-file)
 * [**FAQ**](#faq)
@@ -76,7 +76,7 @@ There are a few symbols that are used throughout the guide. This section will br
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes:**<br>
 
-Light blue blocks of text with the :information_source: symbol at the top (like this block) are notes.
+Light blue blocks of text marked with the :information_source: symbol at the top are notes.
 
 These include important supplementary information which may help you get a fuller picture of how Source Control operates.
 </div>
@@ -84,7 +84,7 @@ These include important supplementary information which may help you get a fulle
 <div markdown="block" class="alert alert-warning">:exclamation: 
 **Caution:**<br>
 
-Yellow blocks of text with the :exclamation: symbol at the top (like this block) are warnings.
+Yellow blocks of text marked with the :exclamation: symbol at the top are warnings.
 
 These include vital information that will help you avoid potential irreversible loss of data. 
 </div>
@@ -92,7 +92,7 @@ These include vital information that will help you avoid potential irreversible 
 <div markdown="block" class="alert alert-primary">
 :bulb: **Tips:**<br> 
 
-Blue blocks of text with the :bulb: symbol at the top (like this block) are tips.
+Blue blocks of text marked with the :bulb: symbol at the top are tips.
 
 Tips are information that are not essential to the usage of Source Control, but instead provide you with a greater insight on how you can use Source Control more effectively.
 </div>
@@ -173,6 +173,13 @@ Tips are information that are not essential to the usage of Source Control, but 
 [Return to Table of Contents](#table-of-contents)
 
 <div style="page-break-after: always;"></div>
+
+## **Adding Data**
+
+Source Control helps to store data of each student, which includes their name, NUSNET ID, groups, scores for each assessment, as well as tags.
+The following commands, `addstudent`, `addgroup`, `addalloc`, `addassessment` and `addscore`, allows you to create new students, groups and assessments, 
+and add new information to each student quickly.  
+
 
 ### Adding a student : `addstudent`
 
@@ -284,6 +291,12 @@ Examples:
 
 [Return to Table of Contents](#table-of-contents)
 
+## **Searching Data**
+
+Source Control can store large amount of student data, and it may be a trouble to scroll through the long list.
+The following commands, `list` and `search`, allows you to go through your list of students quickly,
+filtering the displayed list of students by their names, NUSNET IDs, groupings, or their tags. 
+
 
 ### Listing all students : `list`
 
@@ -329,11 +342,17 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
+## **Analysing Data**
+
+Source Control provides in-depth data analysis of the performance of your students in each assessment.
+The following command, `show`, analyses and displays students' performance in a concise graph chart,
+giving you timely feedback on the pace and difficulty level of the module. 
+
 ### Showing assessment result analysis : `show`
 
 Shows the in-depth data analysis of individual, group, or the cohort's performance for assessments.
 
-This allows you to compare an individual student or an individual group's performance across different assessments as well as across the cohort.
+This allows you to compare an individual student or an individual group's performance across different assessments and across the cohort.
 Alternatively, if you choose to show data for a specific assessment, you can see the distribution of scores attained by the cohort.
 A chart and some summary statistics are provided as well.
 
@@ -372,6 +391,12 @@ Examples:
 [Return to Table of Contents](#table-of-contents)
 
 <div style="page-break-after: always;"></div>
+
+## **Editing Data**
+
+Source Control helps to store data of each student, and there can be minor changes to these information throughout the semester.
+The following commands, `edit` and `delete`, allows you to make these minor changes in-app quickly, without having to go through the trouble of
+importing a new file.
 
 ### Editing a student : `edit`
 
@@ -416,10 +441,16 @@ Examples:
 
 [Return to Table of Contents](#table-of-contents)
 
+## **Importing and Exporting Data**
+
+Source Control helps to store data of each student, and there can be major changes to these information throughout the semester,
+such as bulk uploading of assessment scores after each assessment.
+The following commands, `import` and `export`, allows you to make these major changes quickly, through the use of a CSV file,
+so that you can easily update Source Control without needing to key in each change individually.
 
 ### Importing data : `import`
 
-Loads data as specified in the provided CSV file. This allows you to import shared data from others who are using Source Control as well.
+Loads data as specified in the provided CSV file, so that you can import shared data from others who are using Source Control as well.
 
 Format: `import -f <file_path> [-g <number_of_group_columns>] [-a <number_of_assessment_columns>] [-t <number_of_tag_columns>]`
 
@@ -491,10 +522,15 @@ Format: `export`
 
 [Return to Table of Contents](#table-of-contents)
 
+## **General Features**
+
+The following commands, `clear`, `exit` and `help`, are some basic general features that can enhance your experience in Source Control.
+You can also quickly retrieve past commands entered just like a how traditional CLI does.  
+
 
 ### Clearing all data : `clear`
 
-Clears all existing data. This can be used to reset the application to its initial state (e.g. at the start of a new semester).
+Clears all existing data, so that you can reset the application to its initial state (e.g. at the start of a new semester).
 
 <div markdown="block" class="alert alert-warning">:exclamation: 
 **Caution:**<br>
@@ -510,7 +546,7 @@ Format: `clear`
 
 ### Exiting the app : `exit`
 
-Exits the application.
+Exits the application safely.
 
 Format: `exit`
 
@@ -540,6 +576,14 @@ Retrieves past command lines input, allowing for quick access to past commands s
 [Return to Table of Contents](#table-of-contents)
 
 <div style="page-break-after: always;"></div>
+
+## **Advanced Features**
+
+The following features allows experience users to customise Source Control, so that you can use Source Control with even greater efficiency. 
+The following command, `alias`, allows you to customise other commands in Source Control, so that you can type shorter commands to access existing features. 
+You can also edit the JSON data file directly to quickly edit data stored in Source Control. 
+
+For new users, please proceed with caution as some of these features are irreversible and can complicate your use of Source Control
 
 ### Setting customized aliases for commands : `alias`
 
