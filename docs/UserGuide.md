@@ -178,8 +178,8 @@ Tips are information that are not essential to the usage of Source Control, but 
 
 Source Control helps to store data of each student, including their name, NUSNET ID, groups, scores for each assessment, and tags.
 
-The following commands, `addstudent`, `addgroup`, `addalloc`, `addassessment` and `addscore`, allows you to create new students, groups and assessments, 
-and add new information to each student quickly.  
+The following commands, `addstudent`, `addgroup`, `addalloc`, `addassessment` and `addscore`, allows you to create new students, groups and assessments,
+and add new information to each student quickly.
 
 
 ### Adding a student : `addstudent`
@@ -297,7 +297,7 @@ Examples:
 Source Control can store large amount of student data, and it may be a trouble to scroll through the long list of students.
 
 The following commands, `list` and `search`, allows you to go through the list of students quickly,
-filtering the displayed list of students by their names, NUSNET IDs, groupings, or their tags. 
+filtering the displayed list of students by their names, NUSNET IDs, groupings, or their tags.
 
 
 ### Listing all students : `list`
@@ -349,7 +349,7 @@ Examples:
 Source Control provides in-depth data analysis of the performance of your students in each assessment.
 
 The following command, `show`, analyses and displays students' performance in a concise graph chart,
-giving you timely feedback on the pace and difficulty level of the module. 
+giving you timely feedback on the pace and difficulty level of the module.
 
 ### Showing assessment result analysis : `show`
 
