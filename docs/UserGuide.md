@@ -203,6 +203,7 @@ Examples:
 
 [Return to Table of Contents](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
 
 ### Creating a new group : `addgroup`
 
@@ -244,6 +245,8 @@ Format: `addalloc -g <group_name> (-n <student_name> | -i <student_id>)`
   Name is case-sensitive and only allows exact match. E.g. `Jonas` will not match `Jonas Chow`.
 * If multiple students have the same name, NUSNET ID needs to be used to identify them.
 
+<div style="page-break-after: always;"></div>
+
 Examples:
 * `addalloc -g T01A -n Zhiying`
   * adds `Zhiying` into the tutorial group `T01A`.
@@ -260,8 +263,6 @@ Creates a new assessment in the database, so that you can add scores and analyse
 Format: `addassessment -a <assessment_name>`
 * The assessment should not already exist in database.
 * Assessment name can be any number of alphanumeric words.
-
-<div style="page-break-after: always;"></div>
 
 Examples:
 * `addassessment -a P01`
@@ -292,6 +293,8 @@ Examples:
 
 [Return to Table of Contents](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ## **Searching Data**
 
 Source Control can store large amount of student data, and it may be a trouble to scroll through the long list of students.
@@ -309,7 +312,6 @@ Format: `list`
 
 [Return to Table of Contents](#table-of-contents)
 
-<div style="page-break-after: always;"></div>
 
 ### Searching for students : `search`
 
@@ -435,8 +437,6 @@ Format: `delete <index>`
 * Deletes the student at the specified `<index>`.
 * The `<index>` refers to the index number shown in the displayed student list. The `<index>` **must be a positive integer** 1, 2, 3, …
 
-<div style="page-break-after: always;"></div>
-
 Examples:
 * `list` followed by `delete 2`
   * deletes the 2nd student in the student list.
@@ -510,7 +510,7 @@ Examples:
 
 ### Exporting data : `export`
 
-Exports data into a CSV file. Can be used to back up the data, or to share the data to others for them to load into their copy of Source Control.
+Exports data into a CSV file, so that you can back up the data, or share the data to others for them to load into their copy of Source Control.
 
 Format: `export`
 
@@ -612,6 +612,7 @@ Format: `alias -c <existing_command> -as <alias>`
 
 </div>
 
+<div style="page-break-after: always;"></div>
 
 Examples:
 * `alias -c addstudent -as example`
@@ -626,8 +627,6 @@ Examples:
   * removes the alias `example`. `example` will no longer be recognized as a command.
 
 [Return to Table of Contents](#table-of-contents)
-
-<div style="page-break-after: always;"></div>
 
 ### Editing the data file
 
