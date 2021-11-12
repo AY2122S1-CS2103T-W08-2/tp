@@ -176,7 +176,8 @@ Tips are information that are not essential to the usage of Source Control, but 
 
 ## **Adding Data**
 
-Source Control helps to store data of each student, which includes their name, NUSNET ID, groups, scores for each assessment, as well as tags.
+Source Control helps to store data of each student, including their name, NUSNET ID, groups, scores for each assessment, and tags.
+
 The following commands, `addstudent`, `addgroup`, `addalloc`, `addassessment` and `addscore`, allows you to create new students, groups and assessments, 
 and add new information to each student quickly.  
 
@@ -293,8 +294,9 @@ Examples:
 
 ## **Searching Data**
 
-Source Control can store large amount of student data, and it may be a trouble to scroll through the long list.
-The following commands, `list` and `search`, allows you to go through your list of students quickly,
+Source Control can store large amount of student data, and it may be a trouble to scroll through the long list of students.
+
+The following commands, `list` and `search`, allows you to go through the list of students quickly,
 filtering the displayed list of students by their names, NUSNET IDs, groupings, or their tags. 
 
 
@@ -345,6 +347,7 @@ Examples:
 ## **Analysing Data**
 
 Source Control provides in-depth data analysis of the performance of your students in each assessment.
+
 The following command, `show`, analyses and displays students' performance in a concise graph chart,
 giving you timely feedback on the pace and difficulty level of the module. 
 
@@ -395,6 +398,7 @@ Examples:
 ## **Editing Data**
 
 Source Control helps to store data of each student, and there can be minor changes to these information throughout the semester.
+
 The following commands, `edit` and `delete`, allows you to make these minor changes in-app quickly, without having to go through the trouble of
 importing a new file.
 
@@ -445,6 +449,7 @@ Examples:
 
 Source Control helps to store data of each student, and there can be major changes to these information throughout the semester,
 such as bulk uploading of assessment scores after each assessment.
+
 The following commands, `import` and `export`, allows you to make these major changes quickly, through the use of a CSV file,
 so that you can easily update Source Control without needing to key in each change individually.
 
@@ -525,7 +530,7 @@ Format: `export`
 ## **General Features**
 
 The following commands, `clear`, `exit` and `help`, are some basic general features that can enhance your experience in Source Control.
-You can also quickly retrieve past commands entered just like a how traditional CLI does.  
+You can also quickly retrieve past commands entered just like a how traditional CLI does.
 
 
 ### Clearing all data : `clear`
@@ -579,11 +584,12 @@ Retrieves past command lines input, allowing for quick access to past commands s
 
 ## **Advanced Features**
 
-The following features allows experience users to customise Source Control, so that you can use Source Control with even greater efficiency. 
-The following command, `alias`, allows you to customise other commands in Source Control, so that you can type shorter commands to access existing features. 
-You can also edit the JSON data file directly to quickly edit data stored in Source Control. 
+The following features allows experience users to customise Source Control, so that you can use Source Control with even greater efficiency.
 
-For new users, please proceed with caution as some of these features are irreversible and can complicate your use of Source Control
+The following command, `alias`, allows you to customise other commands in Source Control, so that you can type shorter commands to access existing features. 
+You can also edit the JSON data file directly to quickly edit data stored in Source Control.
+
+For new users, please proceed with caution as some of these features are irreversible and can complicate your use of Source Control.
 
 ### Setting customized aliases for commands : `alias`
 
