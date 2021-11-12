@@ -473,16 +473,12 @@ Format: `import -f <file_path> [-g <number_of_group_columns>] [-a <number_of_ass
 * The next `<number_of_tag_columns>` columns, should contain the student's tags.
 * The number of group columns, assessment columns, and tag columns are assumed to be 0 if they are not specified.
 
-<div style="page-break-after: always;"></div>
-
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes:**<br>
 
 * `<number_of_group_columns>` refers to the number of **columns** the groups occupy in the CSV file, not the number of **types** of groups.
 The similar applies for `<number_of_tag_columns>`.
-
 * If the student does not have as many groups as the number of group columns, you should leave several group columns blank.
-
 * If the student does not have a grade for some assessment, you should leave the corresponding assessment column blank.
 
 </div>
@@ -510,6 +506,7 @@ Examples:
 
 [Return to Table of Contents](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
 
 ### Exporting data : `export`
 
