@@ -99,7 +99,7 @@ Tips are information that are not essential to the usage of Source Control, but 
 
 [Return to Table of Contents](#table-of-contents)
 
-
+--------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
 
@@ -234,6 +234,7 @@ Examples:
 
 [Return to Table of Contents](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
 
 ### Adding a student into a group : `addalloc`
 
@@ -244,8 +245,6 @@ Format: `addalloc -g <group_name> (-n <student_name> | -i <student_id>)`
 * Students can be identified by their name or NUSNET ID.
   Name is case-sensitive and only allows exact match. E.g. `Jonas` will not match `Jonas Chow`.
 * If multiple students have the same name, NUSNET ID needs to be used to identify them.
-
-<div style="page-break-after: always;"></div>
 
 Examples:
 * `addalloc -g T01A -n Zhiying`
@@ -272,6 +271,7 @@ Examples:
 
 [Return to Table of Contents](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
 
 ### Adding a score : `addscore`
 
@@ -445,6 +445,8 @@ Examples:
 
 [Return to Table of Contents](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ## **Importing and Exporting Data**
 
 Source Control helps to store data of each student, and there can be major changes to these information throughout the semester,
@@ -481,8 +483,6 @@ The similar applies for `<number_of_tag_columns>`.
 
 </div>
 
-<div style="page-break-after: always;"></div>
-
 <div markdown="block" class="alert alert-warning">:exclamation: 
 **Caution:**<br>
 
@@ -506,7 +506,6 @@ Examples:
 
 [Return to Table of Contents](#table-of-contents)
 
-<div style="page-break-after: always;"></div>
 
 ### Exporting data : `export`
 
@@ -526,6 +525,8 @@ Format: `export`
 </div>
 
 [Return to Table of Contents](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ## **General Features**
 
